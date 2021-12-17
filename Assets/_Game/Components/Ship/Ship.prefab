@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2970632031999273633}
   - component: {fileID: 6578066716522484772}
   - component: {fileID: 2970632031999273632}
+  - component: {fileID: 4097428529522331811}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -34,6 +35,7 @@ Transform:
   - {fileID: 2970632032652603878}
   - {fileID: 2970632033307266043}
   - {fileID: 3600351306863385139}
+  - {fileID: 1045609859095645072}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -104,6 +106,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4097428529522331811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2970632031999273636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b60ff2b65be35240945aa5c8a66ecc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 5676922856953681815, guid: 134b23d4c31f189499426ee39b35918d, type: 3}
 --- !u!1 &2970632032652603877
 GameObject:
   m_ObjectHideFlags: 0
@@ -115,6 +130,7 @@ GameObject:
   - component: {fileID: 2970632032652603878}
   - component: {fileID: 1947438807228636360}
   - component: {fileID: 4908282535492162380}
+  - component: {fileID: 6404877083935443076}
   m_Layer: 0
   m_Name: Ship_Sprite
   m_TagString: Untagged
@@ -215,6 +231,19 @@ PolygonCollider2D:
     - - {x: 1.28, y: -1.28}
       - {x: 0, y: 1.28}
       - {x: -1.28, y: -1.28}
+--- !u!114 &6404877083935443076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2970632032652603877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 307c731af2cc4634189f2b335a85de36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onShipBecameInvisible: {fileID: 11400000, guid: 134b11e858a18d84ba7ac06c5f88e3ee, type: 2}
 --- !u!1 &2970632033307266042
 GameObject:
   m_ObjectHideFlags: 0
@@ -302,3 +331,66 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a0cd419e68444499cf96316af2fa39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6917019300764629386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1045609859095645072}
+  - component: {fileID: 3171963469419678587}
+  m_Layer: 0
+  m_Name: EventListener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1045609859095645072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6917019300764629386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2970632031999273637}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3171963469419678587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6917019300764629386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e21a03da6fb649d5a194da4673d2a3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventNoPayload: {fileID: 0}
+  _responseNoPayload:
+    m_PersistentCalls:
+      m_Calls: []
+  _event: {fileID: 11400000, guid: 134b11e858a18d84ba7ac06c5f88e3ee, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4097428529522331811}
+        m_TargetAssemblyTypeName: ScreenWrap, Assembly-CSharp
+        m_MethodName: OnShipBecameInvisible
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

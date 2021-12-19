@@ -4,33 +4,35 @@ using UnityEngine;
 
 namespace Assignment
 {
-    public abstract class RuntimeSet<T> : ScriptableObject
+    public abstract class RuntimeSet<TKey, TValue> : ScriptableObject
     {
-        private Dictionary<T,T> _setDictionary;
+        private Dictionary<TKey, TValue> _setDictionary;
 
-        private void Awake()
+        private void OnEnable()
         {
-            _setDictionary = new Dictionary<T,T>();
+            _setDictionary = new Dictionary<TKey, TValue>();
         }
 
-        public virtual void Add(T key, T value)
+        public void Add(TKey key, TValue value)
         {
             if (!_setDictionary.ContainsKey(key))
             {
-                _setDictionary.Add(key,value);
+                _setDictionary.Add(key, value);
             }
-            
         }
 
-        public virtual void Remove(T key, T value)
+        public void Remove(TKey key)
         {
             if (_setDictionary.ContainsKey(key))
             {
                 _setDictionary.Remove(key);
             }
         }
-
+        
+        public TValue GetValue(TKey key)
+        {
+            TValue valueToReturn= _setDictionary[key];
+            return valueToReturn;
+        }
     }
-    
-   
 }

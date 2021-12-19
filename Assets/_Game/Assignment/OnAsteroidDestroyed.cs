@@ -19,7 +19,7 @@ public class OnAsteroidDestroyed : MonoBehaviour
     
     private int _instanceID;
 
-    private void OnEnable()
+    private void OnEnable( )
     {
         _instanceID = gameObject.GetInstanceID();
     }
@@ -28,7 +28,7 @@ public class OnAsteroidDestroyed : MonoBehaviour
     {
         if (_instanceID == asteroidID)
         {
-            GameObject asteroid = _asteroidRuntimeSet.GetAsteroid(asteroidID);
+            GameObject asteroid = _asteroidRuntimeSet.GetValue(asteroidID);
             if (asteroid.transform.localScale.x <= minSize)
             {
                 Destroy(asteroid.gameObject);

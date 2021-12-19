@@ -39,7 +39,7 @@ namespace Asteroids
         
         private void OnDestroy()
         {
-            _asteroidRuntimeSet.Remove(_instanceId, gameObject);
+            _asteroidRuntimeSet.Remove(_instanceId);
         }
 
         private void Start()

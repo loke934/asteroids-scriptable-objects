@@ -1,3 +1,5 @@
+using System;
+using Assignment;
 using DefaultNamespace.ScriptableEvents;
 using UnityEngine;
 using Variables;
@@ -8,6 +10,7 @@ namespace Asteroids
     [RequireComponent(typeof(Rigidbody2D))]
     public class Asteroid : MonoBehaviour
     {
+        [Header("Events:")]
         [SerializeField] private ScriptableEventInt _onAsteroidDestroyed;
         
         [Header("Config:")]
@@ -25,10 +28,23 @@ namespace Asteroids
         private Vector3 _direction;
         private int _instanceId;
 
+        [Header("Runtime Sets: ")]
+        [SerializeField] private AsteroidRuntimeSet _asteroidRuntimeSet;
+        
+        private void OnEnable()
+        {
+            _instanceId = gameObject.GetInstanceID();
+            _asteroidRuntimeSet.Add(_instanceId, gameObject);
+        }
+        
+        private void OnDestroy()
+        {
+            _asteroidRuntimeSet.Remove(_instanceId, gameObject);
+        }
+
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _instanceId = GetInstanceID();
             
             SetDirection();
             AddForce();
@@ -47,26 +63,8 @@ namespace Asteroids
         private void HitByLaser()
         {
             _onAsteroidDestroyed.Raise(_instanceId);
-            Destroy(gameObject);
         }
 
-        // TODO Can we move this to a single listener, something like an AsteroidDestroyer?
-        public void OnHitByLaser(IntReference asteroidId)
-        {
-            if (_instanceId == asteroidId.GetValue())
-            {
-                Destroy(gameObject);
-            }
-        }
-        
-        public void OnHitByLaserInt(int asteroidId)
-        {
-            if (_instanceId == asteroidId)
-            {
-                Destroy(gameObject);
-            }
-        }
-        
         private void SetDirection()
         {
             var size = new Vector2(3f, 3f);

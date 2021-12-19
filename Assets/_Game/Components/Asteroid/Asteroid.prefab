@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1784223117350305365}
   - component: {fileID: 1784223117350305363}
+  - component: {fileID: 5605074047504658953}
   - component: {fileID: 1784223117350305362}
   m_Layer: 0
   m_Name: Asteroid
@@ -30,6 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1524412162417054026}
+  - {fileID: 2019113841050560392}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -53,6 +55,24 @@ MonoBehaviour:
   _minTorque: 0.1
   _maxTorque: 0.5
   _shape: {fileID: 1524412162417054026}
+  _asteroidRuntimeSet: {fileID: 11400000, guid: 64d74e1c52e252b49ac1133ae318e7fa, type: 2}
+--- !u!114 &5605074047504658953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784223117350305384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ac94b59b4ac7d459c2a0c7a9e92853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _asteroidRuntimeSet: {fileID: 11400000, guid: 64d74e1c52e252b49ac1133ae318e7fa, type: 2}
+  minSize: 0.8
+  smallScale: {x: 0.15, y: 0.15, z: 0.15}
+  spawnAmount: 4
+  _asteroidPrefab: {fileID: 1784223117350305384}
 --- !u!50 &1784223117350305362
 Rigidbody2D:
   serializedVersion: 4
@@ -74,6 +94,69 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &3430066857620151050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2019113841050560392}
+  - component: {fileID: 2105620730592057485}
+  m_Layer: 0
+  m_Name: Event Listener
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2019113841050560392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430066857620151050}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1784223117350305365}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2105620730592057485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3430066857620151050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98b8f09ae7c24da19a15cb1b403ad85b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventNoPayload: {fileID: 0}
+  _responseNoPayload:
+    m_PersistentCalls:
+      m_Calls: []
+  _event: {fileID: 11400000, guid: 6194a1f60d68f9f4da5519ce74b63a58, type: 2}
+  _response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5605074047504658953}
+        m_TargetAssemblyTypeName: OnAsteroidDestroyed, Assembly-CSharp
+        m_MethodName: OnAsteroidHitByLaser
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7041230333510869417
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using Assignment;
+using Asteroids;
 using UnityEngine;
 
 public class OnAsteroidDestroyed : MonoBehaviour
@@ -28,7 +29,7 @@ public class OnAsteroidDestroyed : MonoBehaviour
     {
         if (_instanceID == asteroidID)
         {
-            GameObject asteroid = _asteroidRuntimeSet.GetValue(asteroidID);
+            Asteroid asteroid = _asteroidRuntimeSet.GetValue(asteroidID);
             if (asteroid.transform.localScale.x <= minSize)
             {
                 Destroy(asteroid.gameObject);

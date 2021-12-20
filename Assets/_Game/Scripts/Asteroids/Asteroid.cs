@@ -13,6 +13,9 @@ namespace Asteroids
         [Header("Events:")]
         [SerializeField] private ScriptableEventInt _onAsteroidDestroyed;
         
+        [Header("Observables:")]
+        [SerializeField] private IntObservable _scoreObservable;
+        
         [Header("Config:")]
         [SerializeField] private float _minForce;
         [SerializeField] private float _maxForce;
@@ -34,7 +37,7 @@ namespace Asteroids
         private void OnEnable()
         {
             _instanceId = gameObject.GetInstanceID();
-            _asteroidRuntimeSet.Add(_instanceId, gameObject);
+            _asteroidRuntimeSet.Add(_instanceId, this);
         }
         
         private void OnDestroy()
@@ -56,7 +59,9 @@ namespace Asteroids
         {
             if (string.Equals(other.tag, "Laser"))
             {
+                _scoreObservable.ApplyChange(1);
                HitByLaser();
+               Destroy(other.gameObject);
             }
         }
 

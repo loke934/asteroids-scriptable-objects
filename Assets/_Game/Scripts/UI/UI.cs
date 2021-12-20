@@ -15,6 +15,8 @@ namespace UI
         
         [Header("Score:")]
         [SerializeField] private TextMeshProUGUI _scoreText;
+        [SerializeField] private IntReference _;
+        
         
         [Header("Timer:")]
         [SerializeField] private TextMeshProUGUI _timerText;
@@ -25,6 +27,11 @@ namespace UI
         private void Start()
         {
             SetHealthText($"Health: {_healthVar.Value}");
+        }
+
+        public void OnScoreChanged(IntReference change)
+        {
+            SetScoreText($"Health: {change.GetValue()}");
         }
 
         public void OnHealthChanged(IntReference newValue)

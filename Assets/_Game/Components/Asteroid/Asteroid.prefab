@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _onAsteroidDestroyed: {fileID: 11400000, guid: 6194a1f60d68f9f4da5519ce74b63a58, type: 2}
+  _scoreObservable: {fileID: 11400000, guid: 2d6081147892e8a42a43d64502a38327, type: 2}
   _minForce: 2
   _maxForce: 6
   _minSize: 0.2
@@ -71,7 +72,9 @@ MonoBehaviour:
   _asteroidRuntimeSet: {fileID: 11400000, guid: 64d74e1c52e252b49ac1133ae318e7fa, type: 2}
   minSize: 0.8
   smallScale: {x: 0.15, y: 0.15, z: 0.15}
-  spawnAmount: 4
+  spawnAmountMin: 1
+  spawnAmountMax: 9
+  destroyAfterSeconds: 3
   _asteroidPrefab: {fileID: 1784223117350305384}
 --- !u!50 &1784223117350305362
 Rigidbody2D:

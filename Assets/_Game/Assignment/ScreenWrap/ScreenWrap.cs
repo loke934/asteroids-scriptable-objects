@@ -33,6 +33,7 @@ namespace Assignment
                 wrappedPosition.y = -wrappedPosition.y;
             }
             transform.position = wrappedPosition;
+    
         }
     }
 }
